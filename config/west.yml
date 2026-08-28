@@ -33,6 +33,10 @@ manifest:
     - name: zmk-module-runtime-input-processor
       remote: cormoran
       revision: zmk-v0.3.0.0
+    - name: zmk-feature-runtime-combo
+      remote: cormoran
+      revision: main
+      import: true
     - name: prospector-zmk-module
       remote: tokyo2006
       revision: micro_spi2
