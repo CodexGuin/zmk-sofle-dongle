@@ -4,3 +4,4 @@ modules/
 tools/
 .west/
 AGENTS.md
+node_modules/

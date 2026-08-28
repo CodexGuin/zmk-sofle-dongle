@@ -84,10 +84,21 @@ const ids = list.behaviors?.listAllBehaviors?.behaviors ?? [];
 console.error('behaviors:', ids.length);
 
 dump.behaviors = {};
+// Firmware on cormoran's fork answers getBehaviorDetails with fields the stock
+// ts-client cannot decode ("invalid varint encoding"). Names are cosmetic, so
+// skip the ones that fail rather than losing the keymap dump.
+dump.behaviorDetailErrors = [];
 for (const behaviorId of ids) {
-  const d = await rpc({ behaviors: { getBehaviorDetails: { behaviorId } } });
-  const det = d.behaviors?.getBehaviorDetails;
-  if (det) dump.behaviors[det.id] = det.displayName;
+  try {
+    const d = await rpc({ behaviors: { getBehaviorDetails: { behaviorId } } });
+    const det = d.behaviors?.getBehaviorDetails;
+    if (det) dump.behaviors[det.id] = det.displayName;
+  } catch (err) {
+    dump.behaviorDetailErrors.push({ behaviorId, error: String(err?.message ?? err) });
+  }
+}
+if (dump.behaviorDetailErrors.length) {
+  console.error('behavior details undecodable:', dump.behaviorDetailErrors.length, 'of', ids.length);
 }
 
 const km = await rpc({ keymap: { getKeymap: true } });
