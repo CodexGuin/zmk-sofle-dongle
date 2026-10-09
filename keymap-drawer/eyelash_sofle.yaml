@@ -144,10 +144,10 @@ layers:
   - F9
   - F10
   - F11
+  - '&email'
   - '&rt_macro'
   - '&rt_macro 1'
   - '&rt_macro 2'
-  - '&rt_macro 3'
   - R
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:menu-down$$', s: '$$mdi:mouse$$'}
@@ -260,6 +260,3 @@ layers:
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-combos:
-- p: [14, 28, 40]
-  k: '&soft_off'
