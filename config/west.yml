@@ -6,6 +6,8 @@ manifest:
       url-base: https://github.com/cormoran
     - name: gpeye
       url-base: https://github.com/GPeye
+    - name: qtrnmr
+      url-base: https://github.com/qtrnmr
     - name: englmaxi
       url-base: https://github.com/englmaxi
   projects:
@@ -31,6 +33,9 @@ manifest:
     - name: zmk-module-runtime-input-processor
       remote: cormoran
       revision: zmk-v0.3.0.0
+    - name: zmk-module-runtime-config
+      remote: qtrnmr
+      revision: 76703f306052a69be869f55d98a518ab92efa020  # main 2026-09-15, targets v0.3-branch+dya
     - name: zmk-dongle-display
       remote: englmaxi
       revision: v0.3

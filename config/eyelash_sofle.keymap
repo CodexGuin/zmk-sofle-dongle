@@ -49,6 +49,12 @@
             quick-tap-ms = <175>;
             require-prior-idle-ms = <100>;
         };
+        rt_macro: rt_macro {
+            compatible = "zmk,behavior-runtime-macro";
+            #binding-cells = <1>;
+            display-name = "Runtime Macro";
+        };
+
         rsr_vol: rsr_vol {
             compatible = "zmk,behavior-runtime-sensor-rotate";
             #sensor-binding-cells = <0>;
@@ -120,7 +126,7 @@
         layer_2 {
             bindings = <
 &kp ESC          &kp F1           &kp F2           &kp F3           &kp F4           &kp F5           &mmv MOVE_UP     &kp F6           &kp F7           &kp F8           &kp F9           &kp F10          &kp F11
-&none            &none            &none            &none            &kp R            &none            &mmv MOVE_DOWN   &none            &none            &kp UP           &none            &none            &none
+&rt_macro 0      &rt_macro 1      &rt_macro 2      &rt_macro 3      &kp R            &none            &mmv MOVE_DOWN   &none            &none            &kp UP           &none            &none            &none
 &none            &kp A            &kp Z            &kp X            &kp C            &none            &mmv MOVE_LEFT   &none            &kp LEFT         &kp DOWN         &kp RIGHT        &none            &none
 &none            &none            &none            &none            &none            &none            &mmv MOVE_RIGHT  &none            &none            &kp HOME         &kp END          &none            &none
 &none            &none            &to 0            &none            &none            &kp SPACE        &mkp MB1         &kp RET          &none            &none            &none            &none
