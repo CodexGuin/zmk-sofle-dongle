@@ -71,6 +71,15 @@
     };
 
     macros {
+        email: email {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            display-name = "Email";
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings = <&kp D &kp A &kp R &kp R &kp E &kp N &kp S &kp E &kp A &kp H &kp Y &kp O &kp N &kp G &kp L &kp I &kp A &kp N &kp G &kp AT &kp P &kp R &kp O &kp T &kp O &kp N &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>;
+        };
+
         shift_MB3: shift_MB3 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -88,12 +97,24 @@
     };
 
     combos {
-        compatible = "zmk,combos";
+        compatible = "zmk,runtime-combos";
 
         softoff {
             bindings = <&soft_off>;
             key-positions = <14 28 40>;
         };
+
+        // Runtime placeholders (key positions are fixed at build time): parked
+        // on unused layer_3 doing nothing until assigned live with
+        // `zmkrt combo set N binding ...` and `zmkrt combo set N layers ...`.
+        combo_wf { key-positions = <15 16>; bindings = <&none>; layers = <3>; };
+        combo_fp { key-positions = <16 17>; bindings = <&none>; layers = <3>; };
+        combo_lu { key-positions = <21 22>; bindings = <&none>; layers = <3>; };
+        combo_uy { key-positions = <22 23>; bindings = <&none>; layers = <3>; };
+        combo_xc { key-positions = <41 42>; bindings = <&none>; layers = <3>; };
+        combo_cd { key-positions = <42 43>; bindings = <&none>; layers = <3>; };
+        combo_h_comma { key-positions = <47 48>; bindings = <&none>; layers = <3>; };
+        combo_comma_dot { key-positions = <48 49>; bindings = <&none>; layers = <3>; };
     };
 
     keymap {
@@ -126,7 +147,7 @@
         layer_2 {
             bindings = <
 &kp ESC          &kp F1           &kp F2           &kp F3           &kp F4           &kp F5           &mmv MOVE_UP     &kp F6           &kp F7           &kp F8           &kp F9           &kp F10          &kp F11
-&rt_macro 0      &rt_macro 1      &rt_macro 2      &rt_macro 3      &kp R            &none            &mmv MOVE_DOWN   &none            &none            &kp UP           &none            &none            &none
+&email           &rt_macro 0      &rt_macro 1      &rt_macro 2      &kp R            &none            &mmv MOVE_DOWN   &none            &none            &kp UP           &none            &none            &none
 &none            &kp A            &kp Z            &kp X            &kp C            &none            &mmv MOVE_LEFT   &none            &kp LEFT         &kp DOWN         &kp RIGHT        &none            &none
 &none            &none            &none            &none            &none            &none            &mmv MOVE_RIGHT  &none            &none            &kp HOME         &kp END          &none            &none
 &none            &none            &to 0            &none            &none            &kp SPACE        &mkp MB1         &kp RET          &none            &none            &none            &none
